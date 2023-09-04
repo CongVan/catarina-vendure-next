@@ -1,0 +1,48 @@
+query Collections($options: CollectionListOptions) {
+  collections(options: $options) {
+    items {
+      name
+      slug
+      id
+      filters {
+        args {
+          name
+          value
+        }
+      }
+      children {
+        name
+        id
+        slug
+        filters {
+          args {
+            name
+            value
+          }
+        }
+        breadcrumbs {
+          name
+        }
+      }
+    }
+    totalItems
+  }
+}
+
+query Collection($slug: String!) {
+  collection(slug: $slug) {
+    name
+    slug
+    id
+    filters {
+      args {
+        name
+        value
+      }
+    }
+    breadcrumbs {
+      name
+      slug
+    }
+  }
+}

@@ -1,0 +1,34 @@
+query search($input: SearchInput!) {
+  search(input: $input) {
+    facetValues {
+      count
+      facetValue {
+        name
+        facet {
+          name
+        }
+        id
+      }
+    }
+    items {
+      productName
+      slug
+      productId
+      currencyCode
+      price {
+        ... on SinglePrice {
+          value
+        }
+        ... on PriceRange {
+          min
+          max
+        }
+      }
+
+      productAsset {
+        preview
+      }
+    }
+    totalItems
+  }
+}

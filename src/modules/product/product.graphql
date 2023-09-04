@@ -1,0 +1,54 @@
+query Product($id: ID, $slug: String) {
+  product(id: $id, slug: $slug) {
+    name
+    slug
+    description
+    collections {
+      name
+      slug
+      parent {
+        id
+      }
+      filters {
+        args {
+          name
+          value
+        }
+      }
+      breadcrumbs {
+        name
+        slug
+      }
+    }
+    assets {
+      source
+    }
+    optionGroups {
+      name
+      id
+      options {
+        name
+        id
+      }
+    }
+    facetValues {
+      name
+      id
+      facet {
+        name
+      }
+    }
+    variants {
+      name
+      id
+      price
+      stockLevel
+      priceWithTax
+      currencyCode
+      options {
+        id
+        groupId
+      }
+    }
+  }
+}

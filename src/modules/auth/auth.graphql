@@ -1,0 +1,26 @@
+mutation login($username: String!, $password: String!, $rememberMe: Boolean) {
+  login(username: $username, password: $password, rememberMe: $rememberMe) {
+    ... on InvalidCredentialsError {
+      errorCode
+      message
+    }
+    ... on CurrentUser {
+      id
+      identifier
+      channels {
+        code
+        token
+        id
+        permissions
+      }
+    }
+    ... on NotVerifiedError {
+      errorCode
+      message
+    }
+    ... on NativeAuthStrategyError {
+      errorCode
+      message
+    }
+  }
+}
